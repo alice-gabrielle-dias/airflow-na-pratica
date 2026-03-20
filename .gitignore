@@ -1,4 +1,16 @@
-config/
+# Airflow
 logs/
+config/
 plugins/
+
+# Ambiente
 .env
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Outros comuns
+.DS_Store
