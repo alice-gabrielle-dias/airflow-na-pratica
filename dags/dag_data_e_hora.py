@@ -14,7 +14,7 @@ with DAG(
     dag_id= 'data_e_hora_atual',
     start_date= datetime(2024, 6, 1), # Data a partir da qual a DAG pode ser executada
     schedule=None, # DAG executada manualmente (sem agendamento automático)
-    catchup=False # Não executa execuções antigas que ficaram pendentes
+    catchup=False # # Ignora execuções antigas
 ) as dag:
     # Task que executa a função de data e hora
     tarefa_data_e_hora = PythonOperator(
