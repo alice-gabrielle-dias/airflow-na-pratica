@@ -1,0 +1,37 @@
+from airflow import DAG
+from airflow.providers.standard.operators.python import PythonOperator
+from datetime import datetime
+
+def inicio():
+    print("Início")
+    
+def processamento():
+    print("Processamento")
+    
+def fim():
+    print("Fim")
+    
+with DAG(
+    dag_id= "tres_tasks_simples",
+    start_date= datetime(2024, 6, 1),
+    schedule=None, # Execução manual (sem agendamento)
+    catchup=False, # Não executa DAGs passadas
+) as dag:
+    
+    task1= PythonOperator(
+        task_id= "inicio",
+        python_callable=inicio
+    )
+    
+    task2= PythonOperator(
+        task_id= "processamento",
+        python_callable=processamento
+    )
+    
+    task3= PythonOperator(
+        task_id= "fim",
+        python_callable=fim
+    )
+    
+    task1 >> task2 >> task3
+    
